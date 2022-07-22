@@ -1,0 +1,27 @@
+*{
+    font-family: fantasy;
+    font-size: 20px;
+}
+
+#work {
+    background-color: rgb(81, 81, 214);
+    text-align: center;
+    
+    
+}
+
+#tile{
+    border: solid black ;
+    background-color: whitesmoke;
+    margin: 10px;
+}
+
+#center-this{
+display: flex;
+justify-content: center;
+}
+
+#inline{
+    display: inline-block;
+
+}

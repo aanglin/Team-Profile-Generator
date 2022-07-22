@@ -1,10 +1,10 @@
 const fs = require('fs');
-const inquirer = require('inquirer')
+const inquirer = require('inquirer');
 const Employee = require('./lib/Employee');
-const Manager = require('./lib/Manager')
-const Engineer = require('./lib/Engineer')
-const Intern = require('./lib/Intern')
-
+const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
+const Html = require('./src/generate.html')
 const teamArray = [];
 
 
@@ -37,8 +37,8 @@ const addEngineer = () => {
     
     
   ]) .then(answer => {
-    let Engineer = new Engineer(answer.name, answer.id, answer.email, "Engineer", answer.officeNumber);
-    teamArray.push(Engineer);
+    let engineer = new Engineer(answer.name, answer.id, answer.email,answer.github);
+    teamArray.push(engineer);
     createTeam();
   })  
 }
@@ -71,8 +71,8 @@ const addIntern = () => {
     
     
   ]) .then(answer => {
-    let Intern = new Intern(answer.name, answer.id, answer.email, "Intern", answer.school);
-    teamArray.push(Intern);
+    let intern = new Intern(answer.name, answer.id, answer.email, answer.school);
+    teamArray.push(intern);
     createTeam();
   })  
 }
@@ -105,88 +105,73 @@ const addManager = () => {
        
           
         ]) .then(answer => {
-            let manager = new Manager(answer.name, answer.id, answer.email, 'Manager', answer.officeNumber);
+            let manager = new Manager(answer.name, answer.id, answer.email, answer.officeNumber);
             teamArray.push(manager);
             createTeam();
     })  
         }
-                        const writeToFile = data => {
-                             const generateHTML = generateHTML(data);
-                            return new Promise((resolve, reject) => {
-                                fs.writeFile('../dist', generatedHTML, err => {
-                                    if (err) {
-                                        reject(err);
-                                    }
-                        
-                                    resolve({
-                                        ok: true,
-                                        message: 'Page generated!'
-                                    });
-                                });
-                            });
-                        };
-    
-                      function teamArrayHtml() {
-                        const arrayCard = teamArray.map(t => {
-                          switch (t.role) {
-                            case 'Manager':
-                              return`
-                              <div id="inline">
-      <div class="card" id="tile" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">Manager</h5>
-          <h6 class="card-subtitle mb-2 text-muted">${t.getName}</h6>
-          <ul>
-              <li>Id:${t.getId}</li>
-              <li>Office Number:${t.getOfficeNumber}</li>
-          </ul>
-          <a href="mailto:${t.getEmail}" class="card-link">${t.getEmail}:</a>
-        </div>
-    </div>
-    </div> `
+                       
+    //                     function teamArrayHtml(teamArray) {
+    //                     const arrayCard = teamArray.map(t => {
+    //                       switch (t.role) {
+    //                         case 'Manager':
+    //                           return`
+    //                           <div id="inline">
+    //   <div class="card" id="tile" style="width: 18rem;">
+    //     <div class="card-body">
+    //       <h5 class="card-title">Manager</h5>
+    //       <h6 class="card-subtitle mb-2 text-muted">${t.getName}</h6>
+    //       <ul>
+    //           <li>Id:${t.getId}</li>
+    //           <li>Office Number:${t.getOfficeNumber}</li>
+    //       </ul>
+    //       <a href="mailto:${t.getEmail}" class="card-link">${t.getEmail}:</a>
+    //     </div>
+    // </div>
+    // </div> `
          
-    case 'Engineer':
-      return `
-      <div id="inline">
-      <div class="card"id="tile" style="width: 18rem;">
-          <div class="card-body">
-            <h5 class="card-title">Engineer</h5>
-            <h6 class="card-subtitle mb-2 text-muted">${t.getName}</h6>
-            <ul>
-                <li>Id:${t.getid}</li>
-            </ul>
-            <a href="mailto:${t.getEmail}" class="card-link">${t.getEmail}<br
-             href="https://github.com/" class="card-link">${t.getGithub}</a>
-          </div>
-        </div> 
-      </div> `
+    // case 'Engineer':
+    //   return `
+    //   <div id="inline">
+    //   <div class="card"id="tile" style="width: 18rem;">
+    //       <div class="card-body">
+    //         <h5 class="card-title">Engineer</h5>
+    //         <h6 class="card-subtitle mb-2 text-muted">${t.getName}</h6>
+    //         <ul>
+    //             <li>Id:${t.getid}</li>
+    //         </ul>
+    //         <a href="mailto:${t.getEmail}" class="card-link">${t.getEmail}<br
+    //          href="https://github.com/" class="card-link">${t.getGithub}</a>
+    //       </div>
+    //     </div> 
+    //   </div> `
 
-      case 'Intern':
-        return `
-        <div id="inline">
-      <div class="card"id="tile" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">Intern</h5>
-          <h6 class="card-subtitle mb-2 text-muted">${t.getName}</h6>
-          <ul>
-              <li>Id:${t.getid}</li>
-              <li>School: ${t.getSchool}</li>
-          </ul>
-          <a href="#" class="card-link">Email</a>
-        </div>
-      </div> 
-    </div> `
-          default:
-            return results;                     
+    //   case 'Intern':
+    //     return `
+    //     <div id="inline">
+    //   <div class="card"id="tile" style="width: 18rem;">
+    //     <div class="card-body">
+    //       <h5 class="card-title">Intern</h5>
+    //       <h6 class="card-subtitle mb-2 text-muted">${t.getName}</h6>
+    //       <ul>
+    //           <li>Id:${t.getid}</li>
+    //           <li>School: ${t.getSchool}</li>
+    //       </ul>
+    //       <a href="#" class="card-link">Email</a>
+    //     </div>
+    //   </div> 
+    // </div> `
+    //       // default:
+    //       //   return results;                     
                          
-          }
-          })
-          return teamArray;
+    //       }
+    //       })
+    //       return arrayCard.join('');
           
-        }
+    //     }
 
-          const generateHTML = () =>{
-            const results = `
+          const generateHTML = (teamArray) =>{
+            return `
             <!DOCTYPE html>
             <html lang="en">
             <head>
@@ -208,7 +193,7 @@ const addManager = () => {
                   </div>
             
                   <div id="center-this">
-                  ${teamArrayHtml().join('')}
+                  ${teamArrayHtml(teamArray)}
                   </div>
 
                   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -217,10 +202,25 @@ const addManager = () => {
                  </body>
                  </html>
                  `;
-                 return results;
-                 
-                }
-                function createTeam(){
+              }
+
+              const writeToFile = () => {
+                // let generateHTML = generateHTML(data);
+              return new Promise((resolve, reject) => {
+                  fs.writeFileSync('./dist/index.html', Html(teamArray), err => {
+                      if (err) {
+                          reject(err);
+                      }
+          
+                      resolve({
+                          ok: true,
+                          message: 'Page generated!'
+                      });
+                  });
+              });
+          };
+
+                         function createTeam(){
                           inquirer.prompt([
                               {
                               type: "list",
@@ -249,7 +249,7 @@ const addManager = () => {
                       
                                   default:
                                       console.log(teamArray);
-                                      writeToFile(teamArray); 
+                                      writeToFile(); 
                               }; 
                           });
                       
