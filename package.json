@@ -1,0 +1,23 @@
+{
+  "name": "team-profile-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "Jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aanglin/Team-Profile-Generator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aanglin/Team-Profile-Generator/issues"
+  },
+  "homepage": "https://github.com/aanglin/Team-Profile-Generator#readme",
+  "dependencies": {
+    "jest": "^28.1.3"
+  }
+}
