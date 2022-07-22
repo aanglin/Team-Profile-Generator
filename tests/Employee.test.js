@@ -33,12 +33,12 @@ describe('Employee', () =>{
         expect(emp.getId()).toBe(testValue);
     });
     it('can get email from function called', () => {
-        const testValue = 'oneperson@one.com';
+        const testValue = 'me@me.com';
         const emp = new Employee(testValue);
         expect(emp.getEmail()).toBe(testValue);
     });
     it('can get Role from function called', () => {
-        const testValue = 'Jade';
+        const testValue = 'David';
         const emp = new Employee(testValue);
         expect(emp.getRole()).toBe(testValue);
     });

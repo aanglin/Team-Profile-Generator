@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/aanglin/Team-Profile-Generator#readme",
   "dependencies": {
+    "inquirer": "^8.0.1",
     "jest": "^28.1.3"
   }
 }
