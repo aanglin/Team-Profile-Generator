@@ -3,9 +3,15 @@
     font-size: 20px;
 }
 
+#change{
+    background-color: #9E7E1B;
+    margin: 10px;
+}
+
 #work {
-    background-color: rgb(81, 81, 214);
+    background-color: #0B249E;
     text-align: center;
+    color: whitesmoke;
     
     
 }
