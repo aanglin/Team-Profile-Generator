@@ -4,7 +4,7 @@
 #   Description
 <p>When you have a new employee you want to keep a record of, the team profile templat al;lows you to create an employee card based on their position that will hold title, id #, email and alot more based on position</p>
 
-[![Employee Template](/src/image/Screen%20Shot%202022-07-23%20at%2010.42.26%20AM.png)]
+![Employee Template](/src/image/Screen%20Shot%202022-07-23%20at%2010.42.26%20AM.png)
 
 
 
